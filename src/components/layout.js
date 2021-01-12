@@ -4,7 +4,7 @@ const Layout = ({
     navigation,
     children
 }) => {
-    return <main className="layout">
+    return <main className="layout py-4">
         <div className="container">
             {
                 navigation &&
