@@ -10,7 +10,7 @@ const Home = () => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
 
-    const limit = 1;
+    const limit = 15;
     
     const getCommits = async (page) => {
         const [error, data] = await getProyectRepository(page, limit);
@@ -56,32 +56,31 @@ const Home = () => {
             id="commits"
         >
             {
-                (!error && rows.length > 0) &&
+                !error ?
                 <>
                     <Table
                         headings={headings}
                         rows={rows}
                     />
-                    <div className="btn-group">
-                        <Button
-                            onClick={onPrev}
-                            text='Prev'
-                            buttonStyle='secondary'
-                            outline
-                            disabled={page === 1}
-                        />
-                        <Button
-                            onClick={onNext}
-                            text='Next'
-                            buttonStyle='secondary'
-                            outline
-                            disabled={commits?.length < limit}
-                        />
+                    <div className="text-center">
+                        <div className="btn-group mt-4">
+                            <Button
+                                onClick={onPrev}
+                                text='Prev'
+                                buttonStyle='secondary'
+                                outline
+                                disabled={page === 1}
+                            />
+                            <Button
+                                onClick={onNext}
+                                text='Next'
+                                buttonStyle='secondary'
+                                outline
+                                disabled={commits?.length < limit}
+                            />
+                        </div>
                     </div>
-                </>
-            }
-            {
-                error &&
+                </>:
                 <EmptyState
                     icon={Icons.NotFount}
                     title={`${error.status} Error`}
