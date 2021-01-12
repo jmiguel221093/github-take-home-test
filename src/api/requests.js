@@ -1,9 +1,18 @@
 import api from './instance';
 
 export const getProyectRepository = async () => {
+
+    let error = null;
+    let data = null;
+
     try{
-        return await api.get('/repos/jmiguel221093/github-take-home-test/commits');
+        data =  await api.get('/repos/jmiguel221093/github-take-home-test/commits');
+        return [ error, data.data ];
     } catch(e) {
-        return e;
+        error =  {
+            message: e.response.data.message,
+            status: e.response.status
+        };
+        return [ error, data ];
     }
 }
