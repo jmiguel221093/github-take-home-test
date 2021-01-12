@@ -1,9 +1,10 @@
 const Page = ({
     children,
-    title
+    title,
+    id
 }) => {
     return (
-        <div className="page mt-4">
+        <div id={id} className="page mt-4">
             {
                 title &&
                 <div className="page-header mb-5">

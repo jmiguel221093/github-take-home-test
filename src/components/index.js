@@ -3,6 +3,7 @@ import Tabs from './tabs';
 import Page from './page';
 import Table from './table';
 import EmptyState from './empty-state';
+import Thumbnail from './thumbnail';
 
 import * as Icons from './icons';
 
@@ -12,5 +13,6 @@ export {
     Page,
     Table,
     EmptyState,
-    Icons
+    Icons,
+    Thumbnail
 }
