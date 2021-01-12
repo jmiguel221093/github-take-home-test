@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { Home, User } from '../views';
+import { Home, User, Readme } from '../views';
 
 import { Layout, Tabs } from '../components';
 
@@ -35,6 +35,7 @@ const Router = () => {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/user' component={User} />
+                    <Route exact path='/readme' component={Readme} />
                 </Switch>
             </Layout>
         </BrowserRouter>
