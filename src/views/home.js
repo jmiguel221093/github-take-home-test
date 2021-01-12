@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProyectRepository } from '../api';
 
-import { Button, EmptyState, Icons, Page, Table, Thumbnail } from '../components';
+import { Button, EmptyState, Icons, Page, Table, Thumbnail, Spinner } from '../components';
 import { formatDate, getRequestErrorMessage } from '../utils';
 
 const Home = () => {
@@ -56,6 +56,7 @@ const Home = () => {
             id="commits"
         >
             {
+                (error || commits) ?
                 !error ?
                 <>
                     <Table
@@ -85,7 +86,8 @@ const Home = () => {
                     icon={Icons.NotFount}
                     title={`${error.status} Error`}
                     description={getRequestErrorMessage(error.status, 'repository')}
-                />
+                />:
+                <Spinner />
             }
         </Page>
     )
