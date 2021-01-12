@@ -11,7 +11,7 @@ const Page = ({
                     <h1>{ title }</h1>
                 </div>
             }
-            <div className="page-body">
+            <div className="page-body pb-5">
                 { children }
             </div>
         </div>
