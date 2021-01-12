@@ -1,7 +1,8 @@
 const Thumbnail = ({
-    src
+    src,
+    larger
 }) => (
-    <picture className="thumbnail">
+    <picture className={`thumbnail ${larger?'larger':''}`}>
         <img src={src} alt="" />
     </picture>
 )
