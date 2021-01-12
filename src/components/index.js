@@ -1,3 +1,4 @@
+import Button from './button';
 import Layout from './layout';
 import Tabs from './tabs';
 import Page from './page';
@@ -14,5 +15,6 @@ export {
     Table,
     EmptyState,
     Icons,
-    Thumbnail
+    Thumbnail,
+    Button
 }
