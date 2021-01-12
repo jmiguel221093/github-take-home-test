@@ -5,6 +5,7 @@ import Page from './page';
 import Table from './table';
 import EmptyState from './empty-state';
 import Thumbnail from './thumbnail';
+import Spinner from './spinner';
 
 import * as Icons from './icons';
 
@@ -16,5 +17,6 @@ export {
     EmptyState,
     Icons,
     Thumbnail,
-    Button
+    Button,
+    Spinner
 }
