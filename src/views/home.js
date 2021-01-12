@@ -45,7 +45,7 @@ const Home = () => {
             <Thumbnail src={commit.author.avatar_url} />
             <span className="author-name">{commit.author.login}</span>
         </div>,
-        <strong>{commit.sha.substr(0,6)}</strong>,
+        <strong>{commit.sha.substr(0,7)}</strong>,
         commit.commit.message,
         formatDate(commit.commit.author.date)
     ]) : []
