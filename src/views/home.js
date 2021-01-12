@@ -1,28 +1,42 @@
 import { useEffect, useState } from 'react';
 import { getProyectRepository } from '../api';
 
-import { EmptyState, Icons, Page, Table, Thumbnail } from '../components';
+import { Button, EmptyState, Icons, Page, Table, Thumbnail } from '../components';
 import { formatDate, getRequestErrorMessage } from '../utils';
 
 const Home = () => {
 
     const [commits, setCommits] = useState(null);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
+
+    const limit = 1;
     
+    const getCommits = async (page) => {
+        const [error, data] = await getProyectRepository(page, limit);
+        if(data){
+            setCommits(data);
+            setError(null);
+        }
+        if(error){
+            setError(error);
+            setCommits(null);
+        }
+    }
+
+    const onPrev = () => {
+        setPage(page - 1);
+        setCommits(null);
+    }
+    const onNext = () => {
+        setPage(page + 1);
+        setCommits(null);
+    }
+
     useEffect(()=>{
-        (async () => {
-            const [error, data] = await getProyectRepository();
-            if(data){
-                console.log("DATA", data);
-                setCommits(data);
-                setError(null);
-            }
-            if(error){
-                setError(error);
-                setCommits(null);
-            }
-        })();
-    },[]);
+        !commits &&
+        getCommits(page);
+    });
 
     const headings = ['Author', 'Commit', 'Message', 'Date'];
 
@@ -43,10 +57,28 @@ const Home = () => {
         >
             {
                 (!error && rows.length > 0) &&
-                <Table
-                    headings={headings}
-                    rows={rows}
-                />
+                <>
+                    <Table
+                        headings={headings}
+                        rows={rows}
+                    />
+                    <div className="btn-group">
+                        <Button
+                            onClick={onPrev}
+                            text='Prev'
+                            buttonStyle='secondary'
+                            outline
+                            disabled={page === 1}
+                        />
+                        <Button
+                            onClick={onNext}
+                            text='Next'
+                            buttonStyle='secondary'
+                            outline
+                            disabled={commits?.length < limit}
+                        />
+                    </div>
+                </>
             }
             {
                 error &&
