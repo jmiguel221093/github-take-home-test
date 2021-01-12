@@ -1,0 +1,29 @@
+.user-profile
+    a
+        text-decoration: none
+        color: #212529
+        +transition(opacity 0.2s ease-in-out)
+        &:hover
+            opacity: 0.5
+    .name
+        margin-bottom: 0
+    .login-name
+        font-size: 25px
+        opacity: 0.5
+    .user-info
+        display: flex
+        align-items: center
+        &:not(:last-child)
+            margin-bottom: 0.25rem
+        svg
+            width: 18px
+            height: auto
+            margin-right: 1rem
+    .user-data
+        display: flex
+        .data
+            strong
+                display: block
+                font-size: 1.5rem
+            &:not(:last-child)
+                margin-right: 4rem
